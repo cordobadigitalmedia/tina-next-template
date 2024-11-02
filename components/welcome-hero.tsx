@@ -10,7 +10,7 @@ import { IconList } from "@/components/icons"
 export function WelcomeHero(props: PageBlocksWelcomeHero) {
   return (
     <section className="relative overflow-hidden">
-      <div className="absolute inset-0 mx-auto h-full w-full max-w-[1600px]">
+      <div className="absolute inset-0 mx-auto size-full max-w-[1600px]">
         <IconWrapper />
       </div>
       <div className="relative flex flex-col items-center gap-2 py-24">
@@ -67,7 +67,7 @@ export function WelcomeHero(props: PageBlocksWelcomeHero) {
                   >
                     <Button size="lg" variant={"ghost"}>
                       Learn More
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <ArrowRight className="ml-2 size-4" />
                     </Button>
                   </Link>
                 )

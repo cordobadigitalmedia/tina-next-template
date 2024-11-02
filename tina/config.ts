@@ -159,6 +159,11 @@ export default defineConfig({
               {
                 name: "cardgrid",
                 label: "Card Grid",
+                ui: {
+                  itemProps: (item) => {
+                    return { label: item.gridTitle }
+                  },
+                },
                 fields: [
                   {
                     name: "cardblock",
@@ -167,23 +172,63 @@ export default defineConfig({
                     list: true,
                     ui: {
                       itemProps: (item) => {
-                        // Field values are accessed by item?.<Field name>
-                        return { label: item?.carditem.title }
+                        return { label: item.headline }
                       },
                     },
                     fields: [
                       {
-                        name: "carditem",
-                        label: "card Item",
-                        type: "reference",
-                        collections: ["card"],
-                      },
-                      {
-                        name: "title",
-                        label: "card Title",
+                        name: "headline",
+                        label: "Headline",
                         type: "string",
                       },
+                      {
+                        name: "coverimage",
+                        label: "Cover Image",
+                        type: "image",
+                      },
+                      {
+                        name: "content",
+                        label: "Content",
+                        type: "rich-text",
+                      },
+                      {
+                        name: "links",
+                        label: "Links",
+                        type: "object",
+                        list: true,
+                        ui: {
+                          itemProps: (item) => {
+                            return { label: item.label }
+                          },
+                        },
+                        fields: [
+                          {
+                            type: "string",
+                            name: "link",
+                            label: "Relative or absolute link",
+                          },
+                          {
+                            type: "string",
+                            name: "label",
+                            label: "Button/Link Text",
+                          },
+                          {
+                            type: "string",
+                            name: "style",
+                            label: "Link Type",
+                            options: [
+                              { label: "Simple link", value: "simple" },
+                              { label: "Clickable Button", value: "button" },
+                            ],
+                          },
+                        ],
+                      },
                     ],
+                  },
+                  {
+                    name: "gridTitle",
+                    label: "Card Grid Title",
+                    type: "string",
                   },
                 ],
               },
@@ -273,44 +318,6 @@ export default defineConfig({
             fields: [
               { type: "string", name: "label", label: "Label" },
               { type: "string", name: "link", label: "Link" },
-            ],
-          },
-        ],
-      },
-      {
-        name: "card",
-        label: "Card",
-        path: "content/cards",
-        format: "md",
-        fields: [
-          {
-            name: "title",
-            label: "Title",
-            type: "string",
-          },
-          {
-            name: "coverimage",
-            label: "Cover Image",
-            type: "image",
-          },
-          {
-            name: "content",
-            label: "Content",
-            type: "rich-text",
-          },
-          {
-            name: "links",
-            label: "Links",
-            type: "object",
-            list: true,
-            fields: [
-              { type: "string", name: "link" },
-              { type: "string", name: "label" },
-              {
-                type: "string",
-                name: "style",
-                options: ["simple", "button"],
-              },
             ],
           },
         ],

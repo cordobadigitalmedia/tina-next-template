@@ -1,8 +1,5 @@
 import { defineConfig } from "tinacms"
 
-import { FeaturedIcons } from "../components/icons"
-import { IconSelector } from "./icon-select"
-
 export default defineConfig({
   branch: process.env.VERCEL_GIT_COMMIT_REF || "ismael-upgrade",
   clientId: process.env.TINA_CLIENT_ID || "",
@@ -14,8 +11,9 @@ export default defineConfig({
   media: {
     tina: {
       publicFolder: "public",
-      mediaRoot: "",
+      mediaRoot: "images",
     },
+    accept: ["image/jpeg"],
   },
   schema: {
     collections: [
@@ -32,98 +30,219 @@ export default defineConfig({
         fields: [
           {
             name: "title",
+            label: "Page title",
+            description: "For SEO purposes",
             type: "string",
           },
           {
             name: "blocks",
-            label: "Blocks",
+            label: "Content Blocks",
+            description:
+              "You can re-order them as needed and have different blocks on each page",
             type: "object",
             list: true,
             templates: [
               {
                 name: "welcomeHero",
-                label: "Welcome Hero",
+                label: "Hero Section",
                 fields: [
+                  {
+                    name: "title",
+                    type: "string",
+                    label: "Hero Title",
+                  },
                   {
                     name: "message",
                     type: "rich-text",
+                    label: "Hero Message",
                   },
                   {
                     name: "links",
-                    label: "Links",
-                    type: "object",
-                    list: true,
-                    fields: [
-                      { type: "string", name: "link" },
-                      { type: "string", name: "label" },
-                      {
-                        type: "string",
-                        name: "style",
-                        options: ["simple", "button"],
-                      },
-                    ],
-                  },
-                ],
-              },
-              {
-                name: "featureList",
-                label: "Feature List",
-                fields: [
-                  { name: "byline", type: "string" },
-                  {
-                    name: "message",
-                    type: "rich-text",
-                  },
-                  {
-                    name: "features",
-                    label: "Features",
+                    label: "Hero links",
                     type: "object",
                     list: true,
                     ui: {
                       itemProps: (item) => {
-                        return { label: item.label }
-                      },
-                      defaultItem: {
-                        icon: Object.keys(FeaturedIcons)[0],
-                        label: "Llama Feature",
-                        description: "This is a feature",
+                        // Field values are accessed by item?.<Field name>
+                        return { label: item?.label }
                       },
                     },
                     fields: [
                       {
                         type: "string",
-                        name: "icon",
-                        options: Object.keys(FeaturedIcons),
-                        ui: {
-                          component: IconSelector,
-                        },
+                        name: "link",
+                        label: "Relative or absolute link",
                       },
-                      { type: "string", name: "label" },
                       {
                         type: "string",
-                        name: "description",
-                        ui: {
-                          component: "textarea",
-                        },
+                        name: "label",
+                        label: "Link/Button Text",
+                      },
+                      {
+                        type: "string",
+                        name: "style",
+                        label: "Link type",
+                        options: ["simple", "button"],
+                      },
+                    ],
+                  },
+                  {
+                    type: "string",
+                    name: "backgroundType",
+                    label: "Background Type",
+                    description: "Only the type specified will be used",
+                    options: [
+                      { label: "Image", value: "image" },
+                      { label: "Color", value: "color" },
+                    ],
+                  },
+                  {
+                    name: "backgroundImage",
+                    label: "Hero Background Image",
+                    type: "image",
+                  },
+                  {
+                    name: "backgroundColor",
+                    label: "Hero Background Color",
+                    type: "string",
+                    ui: {
+                      component: "color",
+                    },
+                  },
+                ],
+              },
+              {
+                name: "coverSection",
+                label: "Cover Section",
+                fields: [
+                  {
+                    name: "headline",
+                    type: "string",
+                    label: "Cover Headline",
+                  },
+                  {
+                    name: "content",
+                    label: "Cover Content",
+                    type: "rich-text",
+                  },
+                  {
+                    name: "backgroundImage",
+                    label: "Cover Background Image",
+                    type: "image",
+                  },
+                  {
+                    name: "backgroundColor",
+                    label: "Background Color",
+                    type: "string",
+                    ui: {
+                      component: "color",
+                    },
+                  },
+                ],
+              },
+              {
+                name: "featuredPosts",
+                label: "Featured Posts",
+                fields: [
+                  {
+                    name: "Posts",
+                    label: "Featured Posts",
+                    list: true,
+                    type: "object",
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.label }
+                      },
+                    },
+                    fields: [
+                      {
+                        name: "label",
+                        label: "Label",
+                        type: "string",
+                      },
+                      {
+                        name: "featuredPost",
+                        label: "Featured Post",
+                        type: "reference",
+                        collections: ["post"],
                       },
                     ],
                   },
                 ],
               },
               {
-                name: "featuredReading",
-                label: "Featured Reading",
+                name: "cardgrid",
+                label: "Card Grid",
+                ui: {
+                  itemProps: (item) => {
+                    return { label: item.gridTitle }
+                  },
+                },
                 fields: [
                   {
-                    name: "label",
-                    label: "Label",
-                    type: "string",
+                    name: "cardblock",
+                    label: "Card Block",
+                    type: "object",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.headline }
+                      },
+                    },
+                    fields: [
+                      {
+                        name: "headline",
+                        label: "Headline",
+                        type: "string",
+                      },
+                      {
+                        name: "coverimage",
+                        label: "Cover Image",
+                        type: "image",
+                      },
+                      {
+                        name: "content",
+                        label: "Content",
+                        type: "rich-text",
+                      },
+                      {
+                        name: "links",
+                        label: "Links",
+                        type: "object",
+                        list: true,
+                        ui: {
+                          itemProps: (item) => {
+                            return { label: item.label }
+                          },
+                        },
+                        fields: [
+                          {
+                            type: "string",
+                            name: "link",
+                            label: "Relative or absolute link",
+                          },
+                          {
+                            type: "string",
+                            name: "label",
+                            label: "Button/Link Text",
+                          },
+                          {
+                            type: "string",
+                            name: "style",
+                            label: "Link Type",
+                            options: [
+                              { label: "Simple link", value: "simple" },
+                              { label: "Clickable Button", value: "button" },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
                   },
                   {
-                    name: "featuredPost",
-                    label: "Featured Post",
-                    type: "reference",
-                    collections: ["post"],
+                    name: "gridTitle",
+                    label: "Card Grid Title",
+                    type: "string",
                   },
                 ],
               },

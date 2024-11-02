@@ -1,3 +1,5 @@
+"use client"
+
 import * as React from "react"
 import Link from "next/link"
 import { PageAndNavQuery } from "@/tina/__generated__/types"
@@ -30,9 +32,9 @@ export function SiteHeader(props: PageAndNavQuery["nav"]) {
         <div className="flex items-center gap-6 md:gap-10">
           <Link
             href="/"
-            className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100"
+            className="flex size-12 items-center justify-center rounded-full bg-gray-100"
           >
-            <Logo className="h-5 w-5" />
+            <Logo className="size-5" />
           </Link>
 
           <div className="hidden md:block">
@@ -61,7 +63,7 @@ export function SiteHeader(props: PageAndNavQuery["nav"]) {
                 variant="ghost"
                 className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
               >
-                <Menu className="h-6 w-6" />
+                <Menu className="size-6" />
                 <span className="sr-only">Toggle Menu</span>
               </Button>
             </DialogTrigger>
@@ -111,7 +113,7 @@ export function SecondaryMenu(props: { className?: string }) {
                 variant: "ghost",
               })}
             >
-              <Icon className="h-5 w-5 fill-current" />
+              <Icon className="size-5 fill-current" />
               <span className="sr-only">{item?.platform}</span>
             </div>
           </Link>

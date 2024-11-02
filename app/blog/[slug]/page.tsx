@@ -5,10 +5,10 @@ import { BlogPageComponent } from "@/components/app/blog-page"
 export default async function BlogPage({
   params,
 }: {
-  params: { slug: string }
+  params: Promise<{ slug: string }>
 }) {
   const result = await client.queries.postAndNav({
-    relativePath: `${params.slug}.md`,
+    relativePath: `${(await params).slug}.md`,
   })
   return <BlogPageComponent {...result} />
 }

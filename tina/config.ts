@@ -117,15 +117,25 @@ export default defineConfig({
                   {
                     name: "headline",
                     type: "string",
+                    label: "Cover Headline",
                   },
                   {
-                    name: "tagline",
+                    name: "content",
+                    label: "Cover Content",
                     type: "rich-text",
                   },
                   {
                     name: "backgroundImage",
-                    label: "Background Image",
+                    label: "Cover Background Image",
                     type: "image",
+                  },
+                  {
+                    name: "backgroundColor",
+                    label: "Background Color",
+                    type: "string",
+                    ui: {
+                      component: "color",
+                    },
                   },
                 ],
               },

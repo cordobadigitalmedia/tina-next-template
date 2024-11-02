@@ -140,19 +140,32 @@ export default defineConfig({
                 ],
               },
               {
-                name: "featuredReading",
-                label: "Featured Reading",
+                name: "featuredPosts",
+                label: "Featured Posts",
                 fields: [
                   {
-                    name: "label",
-                    label: "Label",
-                    type: "string",
-                  },
-                  {
-                    name: "featuredPost",
-                    label: "Featured Post",
-                    type: "reference",
-                    collections: ["post"],
+                    name: "Posts",
+                    label: "Featured Posts",
+                    list: true,
+                    type: "object",
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.label }
+                      },
+                    },
+                    fields: [
+                      {
+                        name: "label",
+                        label: "Label",
+                        type: "string",
+                      },
+                      {
+                        name: "featuredPost",
+                        label: "Featured Post",
+                        type: "reference",
+                        collections: ["post"],
+                      },
+                    ],
                   },
                 ],
               },

@@ -32,9 +32,6 @@ export function PageComponent(props: {
           case "PageBlocksWelcomeHero": {
             return <WelcomeHero key={i} {...block} />
           }
-          case "PageBlocksFeatureList": {
-            return <FeatureList key={i} {...block} />
-          }
           case "PageBlocksFeaturedReading": {
             return <FeaturedReading key={i} {...block} />
           }

@@ -9,13 +9,15 @@ blocks:
       - link: /learn
         label: Learn More
         style: simple
+    backgroundType: image
     _template: welcomeHero
   - cardblock:
       - carditem: content/cards/card1.md
-        title: "My Card "
+        title: 'My Card '
       - carditem: content/cards/card2.md
     _template: cardgrid
   - label: Announcement
     featuredPost: content/posts/call-themes.md
     _template: featuredReading
 ---
+

@@ -3,6 +3,12 @@
 import { PageAndNavQuery, PageQuery } from "@/tina/__generated__/types"
 import { useTina } from "tinacms/dist/react"
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { FeaturedReading } from "@/components/blog-list"
 import { FeatureList } from "@/components/features"
 import { Footer } from "@/components/footer"
@@ -34,6 +40,15 @@ export function PageComponent(props: {
           }
         }
       })}
+      <Accordion type="single" collapsible>
+        <AccordionItem value="item-1">
+          <AccordionTrigger>Is it accessible?</AccordionTrigger>
+          <AccordionContent>
+            Yes. It adheres to the WAI-ARIA design pattern.
+          </AccordionContent>
+        </AccordionItem>
+      </Accordion>
+
       <Footer />
     </>
   )

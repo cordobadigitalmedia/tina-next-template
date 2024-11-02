@@ -20,7 +20,7 @@ export function BlogPageComponent(props: {
   return (
     <>
       <SiteHeader {...props.data.nav} />
-      <div className="relative bg-muted">
+      <div className="bg-muted relative">
         <div className="container relative z-10 flex flex-col py-8">
           <FeaturedReadingAlt post={data.post} />
         </div>
@@ -33,11 +33,11 @@ export function BlogPageComponent(props: {
           />
         </div>
       </div>
-      <div className="relative bg-muted py-8 lg:py-24">
+      <div className="bg-muted relative py-8 lg:py-24">
         <div className="mx-auto max-w-5xl px-8">
           <div
             data-tina-field={tinaField(data.post, "body")}
-            className="prose max-w-none dark:prose-invert"
+            className="prose dark:prose-invert max-w-none"
           >
             <TinaMarkdown content={data.post.body} />
           </div>

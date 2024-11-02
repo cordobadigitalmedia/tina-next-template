@@ -4,7 +4,7 @@ import { FeaturedIcons } from "../components/icons"
 import { IconSelector } from "./icon-select"
 
 export default defineConfig({
-  branch: process.env.VERCEL_GIT_COMMIT_REF || "",
+  branch: process.env.VERCEL_GIT_COMMIT_REF || "ismael-upgrade",
   clientId: process.env.TINA_CLIENT_ID || "",
   token: process.env.TINA_TOKEN || "",
   build: {

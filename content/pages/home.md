@@ -1,9 +1,15 @@
 ---
-title: Contact Us
+title: Welcome
 blocks:
-  - title: Contact Us
+  - title: Welcome to our site
     message: |
-      # Contact Us
+      # Welcome
+
+      What we do and how we can serve you
+    links:
+      - link: /contact
+        label: Contact Us
+        style: button
     backgroundType: color
     backgroundColor: '#D9D4D4'
     _template: welcomeHero

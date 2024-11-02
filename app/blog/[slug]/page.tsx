@@ -12,3 +12,11 @@ export default async function BlogPage({
   })
   return <BlogPageComponent {...result} />
 }
+
+export async function generateStaticParams() {
+  const posts = await client.queries.postConnection()
+  const paths = posts.data?.postConnection.edges?.map((edge) => ({
+    slug: edge?.node?._sys.breadcrumbs.join(""),
+  }))
+  return paths || []
+}

@@ -1,7 +1,7 @@
 import { defineConfig } from "tinacms"
 
 export default defineConfig({
-  branch: process.env.VERCEL_GIT_COMMIT_REF || "ismael-upgrade",
+  branch: process.env.VERCEL_GIT_COMMIT_REF || "add-blocks",
   clientId: process.env.TINA_CLIENT_ID || "",
   token: process.env.TINA_TOKEN || "",
   build: {
@@ -42,6 +42,18 @@ export default defineConfig({
             type: "object",
             list: true,
             templates: [
+              {
+                name: "pageContent",
+                label: "Main Content",
+                fields: [
+                  {
+                    name: "content",
+                    type: "rich-text",
+                    label: "Content",
+                    description: "Rich content for page",
+                  },
+                ],
+              },
               {
                 name: "welcomeHero",
                 label: "Hero Section",

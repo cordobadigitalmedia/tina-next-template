@@ -13,5 +13,9 @@ blocks:
     backgroundType: color
     backgroundColor: '#D9D4D4'
     _template: welcomeHero
+  - Posts:
+      - label: Announcement
+        featuredPost: content/posts/call-themes.md
+    _template: featuredPosts
 ---
 

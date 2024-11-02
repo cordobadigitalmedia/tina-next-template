@@ -5,7 +5,6 @@ import { PostAndNavQuery, PostQuery } from "@/tina/__generated__/types"
 import { tinaField, useTina } from "tinacms/dist/react"
 import { TinaMarkdown } from "tinacms/dist/rich-text"
 
-import { FeaturedReadingAlt } from "@/components/blog-list"
 import { Footer } from "@/components/footer"
 import { SiteHeader } from "@/components/site-header"
 
@@ -21,9 +20,6 @@ export function BlogPageComponent(props: {
     <>
       <SiteHeader {...props.data.nav} />
       <div className="bg-muted relative">
-        <div className="container relative z-10 flex flex-col py-8">
-          <FeaturedReadingAlt post={data.post} />
-        </div>
         <div className="absolute -inset-24 blur-lg">
           <Image
             fill={true}

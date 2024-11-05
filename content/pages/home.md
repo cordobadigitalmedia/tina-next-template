@@ -3,15 +3,17 @@ title: Welcome
 blocks:
   - title: Welcome to our site
     message: |
-      # Welcome
-
       What we do and how we can serve you
     links:
+      - link: /contact
+        label: Let's go
+        style: button
       - link: /contact
         label: Contact Us
         style: button
     backgroundType: color
-    backgroundColor: '#100902'
+    backgroundImage: /images/micheile-henderson-SoT4-mZhyhE-unsplash.jpg
+    backgroundColor: '#DDDDDD'
     _template: welcomeHero
   - Posts:
       - label: Announcement

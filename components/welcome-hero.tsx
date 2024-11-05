@@ -8,12 +8,14 @@ import { Button } from "@/components/ui/button"
 import { IconList } from "@/components/icons"
 
 export function WelcomeHero(props: PageBlocksWelcomeHero) {
+  const backgroundColor = props.backgroundColor || "#ffffff"
   return (
-    <section className="relative overflow-hidden">
-      <div className="absolute inset-0 mx-auto size-full max-w-[1600px]">
-        <IconWrapper />
-      </div>
-      <div className="relative flex flex-col items-center gap-2 py-24">
+    <section className={`relative overflow-hidden`}>
+      <div
+        data-tina-field={tinaField(props, "backgroundColor")}
+        className={`relative flex flex-col items-center gap-2 py-24`}
+        style={{ backgroundColor }}
+      >
         <div
           className="px-4 py-8 text-center"
           data-tina-field={tinaField(props, "message")}
@@ -77,137 +79,5 @@ export function WelcomeHero(props: PageBlocksWelcomeHero) {
         </div>
       </div>
     </section>
-  )
-}
-
-const IconWrapper = () => {
-  const icons: {
-    position: string
-    size: keyof typeof sizes
-  }[] = [
-    {
-      position: "top-[5%] left-[5%]",
-      size: "xs",
-    },
-    {
-      position: "top-[65%] left-[5%]",
-      size: "xs",
-    },
-    {
-      position: "top-[10%] left-[10%]",
-      size: "md",
-    },
-    {
-      position: "top-[40%] left-[10%]",
-      size: "sm",
-    },
-    {
-      position: "top-[80%] left-[10%]",
-      size: "md",
-    },
-    {
-      position: "top-[45%] left-[15%]",
-      size: "3xl",
-    },
-    {
-      position: "top-[85%] left-[15%]",
-      size: "xl",
-    },
-    {
-      position: "top-[20%] left-[20%]",
-      size: "lg",
-    },
-    {
-      position: "top-[75%] left-[25%]",
-      size: "xl",
-    },
-    {
-      position: "top-[60%] left-[30%]",
-      size: "xs",
-    },
-    {
-      position: "top-[5%] left-[35%]",
-      size: "lg",
-    },
-    {
-      position: "top-[90%] left-[40%]",
-      size: "md",
-    },
-    {
-      position: "top-[80%] left-[50%]",
-      size: "lg",
-    },
-    {
-      position: "top-[15%] left-[55%]",
-      size: "sm",
-    },
-    {
-      position: "top-[5%] left-[60%]",
-      size: "xs",
-    },
-    {
-      position: "top-[90%] left-[65%]",
-      size: "2xl",
-    },
-    {
-      position: "top-[20%] left-[70%]",
-      size: "3xl",
-    },
-    {
-      position: "top-[75%] left-[75%]",
-      size: "sm",
-    },
-    {
-      position: "top-[40%] left-[80%]",
-      size: "2xl",
-    },
-    {
-      position: "top-[63%] left-[85%]",
-      size: "md",
-    },
-    {
-      position: "top-[65%] left-[85%]",
-      size: "md",
-    },
-    {
-      position: "top-[40%] left-[90%]",
-      size: "sm",
-    },
-    {
-      position: "top-[10%] left-[90%]",
-      size: "xl",
-    },
-    {
-      position: "top-[80%] left-[90%]",
-      size: "xl",
-    },
-  ]
-
-  const sizes = {
-    xs: "h-8 w-8",
-    sm: "h-12 w-12",
-    md: "h-16 w-16",
-    lg: "h-20 w-20",
-    xl: "h-24 w-24",
-    "2xl": "h-28 w-28",
-    "3xl": "h-32 w-32",
-  }
-
-  return (
-    <div className="absolute inset-0 flex items-center justify-center opacity-10 md:opacity-40">
-      {icons.map((icon, i) => {
-        const Icon = IconList[i] || IconList[0]
-        return (
-          <div
-            key={icon.position}
-            className={`ease absolute duration-200 ${icon.position}`}
-          >
-            <div className={`${sizes[icon.size]}`}>
-              <Icon />
-            </div>
-          </div>
-        )
-      })}
-    </div>
   )
 }

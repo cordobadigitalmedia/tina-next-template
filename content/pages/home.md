@@ -11,7 +11,7 @@ blocks:
         label: Contact Us
         style: button
     backgroundType: color
-    backgroundColor: '#D9D4D4'
+    backgroundColor: '#100902'
     _template: welcomeHero
   - Posts:
       - label: Announcement

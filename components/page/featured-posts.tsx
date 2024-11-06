@@ -1,9 +1,18 @@
-import { PageBlocksFeaturedPosts } from "@/tina/__generated__/types"
+import {
+  PageBlocksFeaturedPosts,
+  PageBlocksFeaturedPostsPosts,
+} from "@/tina/__generated__/types"
 
-export function FeaturedPosts(props: PageBlocksFeaturedPosts) {
+export function FeaturedPosts({
+  key,
+  posts,
+}: {
+  key: number
+  posts: PageBlocksFeaturedPostsPosts
+}) {
   return (
     <section className="relative overflow-hidden">
-      <code>{JSON.stringify(props)}</code>
+      <code>{JSON.stringify(posts)}</code>
     </section>
   )
 }

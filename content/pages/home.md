@@ -1,6 +1,12 @@
 ---
 title: Welcome
 blocks:
+  - headline: Page title
+    content: |
+      Hello world - how are you
+    backgroundImage: /images/lms-image-GaaFkDYJQ9gmTXSZLtgbLTXAy2qDs8.jpg
+    backgroundColor: '#704848'
+    _template: coverSection
   - title: Welcome to our site
     message: |
       What we do and how we can serve you

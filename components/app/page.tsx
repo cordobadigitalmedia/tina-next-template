@@ -41,7 +41,7 @@ export function PageComponent(props: {
             return (
               <FeaturedPosts
                 key={i}
-                posts={block.Posts as PageBlocksFeaturedPostsPosts}
+                posts={block.Posts as PageBlocksFeaturedPostsPosts[]}
               />
             )
           }

@@ -16,7 +16,7 @@ export function BlogIndexPageComponent(props: {
   return (
     <>
       <SiteHeader {...data.nav} />
-      <div className="bg-muted">
+      <div className="bg-muted h-full">
         <div className="container flex flex-col gap-8 py-8">
           <BlogList {...data} />
         </div>

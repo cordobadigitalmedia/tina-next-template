@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/enforces-shorthand */
 "use client"
 
 import * as React from "react"
@@ -28,6 +29,7 @@ const DialogOverlay = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Overlay
     ref={ref}
+    // eslint-disable-next-line tailwindcss/classnames-order
     className={cn(
       "bg-background/80 data-[state=closed]:animate-out data-[state=closed]:fade-out data-[state=open]:fade-in fixed inset-0 z-50 backdrop-blur-sm transition-all duration-100",
       className

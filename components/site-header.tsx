@@ -26,8 +26,10 @@ const social = [
 ]
 
 export function SiteHeader(props: PageAndNavQuery["nav"]) {
+  console.log(props)
+  //render each link based on linkType, "relative","page" or "external" - page - use _sys.breadcrumbs.join, external open in new window, relative, use as is
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-background">
+    <header className="bg-background sticky top-0 z-40 w-full border-b">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
         <div className="flex items-center gap-6 md:gap-10">
           <Link

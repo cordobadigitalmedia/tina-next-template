@@ -11,7 +11,7 @@ export function CardGrid(props: PageBlocksCardgrid) {
   return (
     cardblock &&
     cardblock?.length > 0 && (
-      <div className="grid grid-cols-1 gap-8 p-4 sm:grid-cols-2">
+      <div className="container mx-auto grid grid-cols-1 gap-8 p-4 sm:grid-cols-2">
         {cardblock.map((item, i) => {
           const backgroundImage = item?.coverimage
             ? `${item?.coverimage}`

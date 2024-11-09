@@ -11,7 +11,11 @@ export function CoverSection(props: PageBlocksCoverSection) {
   return (
     <>
       {backgroundImage !== "none" && (
-        <section className={`relative h-[35vh]`} style={{ backgroundColor }}>
+        <section
+          className={`relative h-[35vh]`}
+          style={{ backgroundColor }}
+          data-tina-field={tinaField(props, "backgroundColor")}
+        >
           <Image
             alt={props.headline || ""}
             className={`size-full object-cover`}
@@ -21,19 +25,23 @@ export function CoverSection(props: PageBlocksCoverSection) {
               aspectRatio: "1920/1080",
               objectFit: "cover",
             }}
+            data-tina-field={tinaField(props, "backgroundImage")}
             width={1920}
           />
           <div
             className={`absolute inset-0 flex flex-col items-center justify-center bg-gray-900/50`}
           >
-            <h1 className="px-4 text-center text-4xl font-bold text-white sm:text-5xl md:text-6xl">
+            <h1
+              className="px-4 text-center text-4xl font-bold text-white sm:text-5xl md:text-6xl"
+              data-tina-field={tinaField(props, "headline")}
+            >
               {props.headline || ""}
             </h1>
-            <div className="prose py-2 text-white">
-              <TinaMarkdown
-                content={props.content}
-                data-tina-field={tinaField(props.content, "content")}
-              />
+            <div
+              className="prose py-2 text-white"
+              data-tina-field={tinaField(props, "content")}
+            >
+              <TinaMarkdown content={props.content} />
             </div>
           </div>
         </section>

@@ -17,6 +17,7 @@ export function WelcomeHero(props: PageBlocksWelcomeHero) {
       <section
         className="relative flex h-[80vh] w-full items-center justify-center"
         style={{ backgroundColor }}
+        data-tina-field={tinaField(props, "backgroundColor")}
       >
         {backgroundImage !== "none" && (
           <div className="absolute inset-0 overflow-hidden">
@@ -30,34 +31,20 @@ export function WelcomeHero(props: PageBlocksWelcomeHero) {
                 objectFit: "cover",
               }}
               width={1920}
+              data-tina-field={tinaField(props, "backgroundImage")}
             />
           </div>
         )}
         <div className="z-5 relative max-w-3xl px-4 text-center text-white">
-          <h1 className="mb-4 text-5xl font-bold">{props.title}</h1>
-          <TinaMarkdown
-            content={props.message}
-            components={{
-              h1: (props) => (
-                <h1
-                  className="mx-auto text-5xl font-extrabold leading-tight tracking-tighter text-primary md:text-7xl"
-                  {...props}
-                />
-              ),
-              bold: (props) => (
-                <span
-                  className="bg-gradient-to-b from-blue-300 to-pink-600 bg-clip-text text-transparent"
-                  {...props}
-                />
-              ),
-              p: (props) => (
-                <p
-                  className="mx-auto mt-8 max-w-[700px] px-2 text-center text-xl text-primary"
-                  {...props}
-                />
-              ),
-            }}
-          />
+          <h1
+            className="mb-4 text-5xl font-bold"
+            data-tina-field={tinaField(props, "title")}
+          >
+            {props.title}
+          </h1>
+          <div className="prose" data-tina-field={tinaField(props, "message")}>
+            <TinaMarkdown content={props.message} />
+          </div>
           <div className="flex items-center justify-center gap-5 py-12">
             {props.links?.map((link) => {
               switch (link?.style) {

@@ -3,6 +3,7 @@ import {
   PageBlocksFeaturedPosts,
   PageBlocksFeaturedPostsPosts,
 } from "@/tina/__generated__/types"
+import { tinaField } from "tinacms/dist/react"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -28,11 +29,24 @@ export function FeaturedPosts({
           {posts.map((post) => (
             <Card key={post.label}>
               <CardHeader>
-                <CardTitle>{post.featuredPost?.title}</CardTitle>
-                <CardDescription></CardDescription>
+                <CardTitle
+                  data-tina-field={
+                    post.featuredPost?.title &&
+                    tinaField(post.featuredPost, "title")
+                  }
+                >
+                  {post.featuredPost?.title}
+                </CardTitle>
               </CardHeader>
               <CardContent>
-                <div>{post.featuredPost?.description}</div>
+                <div
+                  data-tina-field={
+                    post.featuredPost?.description &&
+                    tinaField(post.featuredPost, "description")
+                  }
+                >
+                  {post.featuredPost?.description}
+                </div>
               </CardContent>
               <CardFooter className="flex justify-between">
                 <Link

@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import Image from "next/image"
 import Link from "next/link"
 import { PageAndNavQuery } from "@/tina/__generated__/types"
 import { Menu } from "lucide-react"
@@ -25,30 +26,61 @@ const social = [
   { handle: "llama-link", platform: "github" },
 ]
 
-export function SiteHeader(props: PageAndNavQuery["nav"]) {
-  console.log(props)
-  //render each link based on linkType, "relative","page" or "external" - page - use _sys.breadcrumbs.join, external open in new window, relative, use as is
+export function SiteHeader({
+  nav,
+  header,
+}: {
+  nav: PageAndNavQuery["nav"]
+  header: PageAndNavQuery["header"]
+}) {
   return (
     <header className="bg-background sticky top-0 z-40 w-full border-b">
       <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
-        <div className="flex items-center gap-6 md:gap-10">
-          <Link
-            href="/"
-            className="flex size-12 items-center justify-center rounded-full bg-gray-100"
-          >
-            <Logo className="size-5" />
+        <div className="flex items-center gap-2 md:gap-3">
+          <Link href="/">
+            <div
+              style={{ position: "relative", width: "50px", height: "50px" }}
+              className="hover:bg-gray-100"
+              data-tina-field={header.logo && tinaField(header, "logo")}
+            >
+              <Image
+                src={header.logo || ""}
+                alt={header.siteTitle || ""}
+                sizes="50px"
+                fill
+                style={{
+                  objectFit: "contain",
+                }}
+              />
+            </div>
           </Link>
-
           <div className="hidden md:block">
             <ul className="flex items-center gap-3 p-6">
-              {props.links?.map((link) => {
+              {nav.links?.map((link) => {
+                let navLink = ""
+                let isExternal = false
+                switch (link?.linkType) {
+                  case "page": {
+                    navLink = link.linkedPage?._sys.breadcrumbs.join("/") || ""
+                  }
+                  case "relative": {
+                    navLink = link.link || ""
+                  }
+                  case "external": {
+                    navLink = link.link || ""
+                    isExternal = true
+                  }
+                }
                 return (
                   <li
                     data-tina-field={link && tinaField(link, "label")}
                     key={link?.link}
                     className="row-span-3"
                   >
-                    <Link href={link?.link || ""}>
+                    <Link
+                      href={navLink}
+                      target={isExternal ? "_blank" : "_self"}
+                    >
                       <Button variant="ghost">{link?.label}</Button>
                     </Link>
                   </li>
@@ -80,11 +112,17 @@ export function SiteHeader(props: PageAndNavQuery["nav"]) {
                 )
               })}
               <DialogFooter>
-                <SecondaryMenu className="flex w-full justify-center md:hidden" />
+                <div className="flex w-full justify-center md:hidden">
+                  <ThemeToggle />
+                </div>
               </DialogFooter>
             </DialogContent>
           </Dialog>
-          <SecondaryMenu className="hidden md:flex" />
+          {header.darkmode && (
+            <div className="hidden md:flex">
+              <ThemeToggle />
+            </div>
+          )}
         </div>
       </div>
     </header>

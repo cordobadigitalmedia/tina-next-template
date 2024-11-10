@@ -1,6 +1,7 @@
 "use client"
 
 import {
+  HeaderQuery,
   PageAndNavQuery,
   PageBlocksFeaturedPostsPosts,
   PageQuery,
@@ -25,7 +26,7 @@ export function PageComponent(props: {
   const { data } = useTina(props)
   return (
     <>
-      <SiteHeader {...data.nav} />
+      <SiteHeader nav={data.nav} header={data.header} />
       {data.page.blocks?.map((block, i) => {
         switch (block?.__typename) {
           case "PageBlocksWelcomeHero": {

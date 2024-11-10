@@ -27,6 +27,20 @@ query pageAndNav($relativePath: String!) {
     }
     ...NavParts
   }
+  header(relativePath: "header.json") {
+    ... on Document {
+      _sys {
+        filename
+        basename
+        breadcrumbs
+        path
+        relativePath
+        extension
+      }
+      id
+    }
+    ...HeaderParts
+  }
 }
 query postAndNav($relativePath: String!) {
   post(relativePath: $relativePath) {

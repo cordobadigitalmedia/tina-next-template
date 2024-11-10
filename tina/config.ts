@@ -382,6 +382,7 @@ export default defineConfig({
             label: "Logo",
             type: "image",
           },
+          { name: "siteTitle", label: "Site Title", type: "string" },
           {
             name: "darkmode",
             label: "Show Dark/Light Mode Switcher",

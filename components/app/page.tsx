@@ -1,10 +1,8 @@
 "use client"
 
 import {
-  HeaderQuery,
   PageAndNavQuery,
   PageBlocksFeaturedPostsPosts,
-  PageQuery,
 } from "@/tina/__generated__/types"
 import { useTina } from "tinacms/dist/react"
 
@@ -27,31 +25,35 @@ export function PageComponent(props: {
   return (
     <>
       <SiteHeader nav={data.nav} header={data.header} />
-      {data.page.blocks?.map((block, i) => {
-        switch (block?.__typename) {
-          case "PageBlocksWelcomeHero": {
-            return <WelcomeHero key={i} {...block} />
-          }
-          case "PageBlocksCardgrid": {
-            return <CardGrid key={i} {...block} />
-          }
-          case "PageBlocksCoverSection": {
-            return <CoverSection key={i} {...block} />
-          }
-          case "PageBlocksFeaturedPosts": {
-            return (
-              <FeaturedPosts
-                key={i}
-                posts={block.Posts as PageBlocksFeaturedPostsPosts[]}
-              />
-            )
-          }
-          case "PageBlocksPageContent": {
-            return <PageContent key={i} {...block} />
-          }
-        }
-      })}
-      <Footer footer={data.footer} />
+      <div className="flex min-h-[calc(100vh-65px)] flex-col">
+        <div className="grow">
+          {data.page.blocks?.map((block, i) => {
+            switch (block?.__typename) {
+              case "PageBlocksWelcomeHero": {
+                return <WelcomeHero key={i} {...block} />
+              }
+              case "PageBlocksCardgrid": {
+                return <CardGrid key={i} {...block} />
+              }
+              case "PageBlocksCoverSection": {
+                return <CoverSection key={i} {...block} />
+              }
+              case "PageBlocksFeaturedPosts": {
+                return (
+                  <FeaturedPosts
+                    key={i}
+                    posts={block.Posts as PageBlocksFeaturedPostsPosts[]}
+                  />
+                )
+              }
+              case "PageBlocksPageContent": {
+                return <PageContent key={i} {...block} />
+              }
+            }
+          })}
+        </div>
+        <Footer footer={data.footer} />
+      </div>
     </>
   )
 }

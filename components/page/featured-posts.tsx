@@ -15,10 +15,8 @@ import {
 } from "@/components/ui/card"
 
 export function FeaturedPosts({
-  key,
   posts,
 }: {
-  key: number
   posts: PageBlocksFeaturedPostsPosts[]
 }) {
   return (

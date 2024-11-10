@@ -52,8 +52,7 @@ export function WelcomeHero(props: PageBlocksWelcomeHero) {
                   return (
                     <Link
                       data-tina-field={tinaField(link, "label")}
-                      // key={link.label}
-                      key={"a"}
+                      key={link.label}
                       href={link.link || ""}
                     >
                       <Button size="lg">{link.label}</Button>
@@ -64,8 +63,7 @@ export function WelcomeHero(props: PageBlocksWelcomeHero) {
                   return (
                     <Link
                       data-tina-field={tinaField(link, "label")}
-                      // key={link.label}
-                      key={"b"}
+                      key={link.label}
                       href={link?.link || ""}
                     >
                       <Button size="lg" variant={"ghost"}>

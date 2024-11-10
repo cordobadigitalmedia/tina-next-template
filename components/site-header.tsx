@@ -54,17 +54,15 @@ export function SiteHeader({
               {nav.links?.map((link) => {
                 let navLink = ""
                 let isExternal = false
-                switch (link?.linkType) {
-                  case "page": {
-                    navLink = link.linkedPage?._sys.breadcrumbs.join("/") || ""
-                  }
-                  case "relative": {
-                    navLink = link.link || ""
-                  }
-                  case "external": {
-                    navLink = link.link || ""
-                    isExternal = true
-                  }
+                if (link?.linkType === "page") {
+                  navLink = link.linkedPage?._sys.breadcrumbs.join("/") || ""
+                }
+                if (link?.linkType === "relative") {
+                  navLink = link.link || ""
+                }
+                if (link?.linkType === "external") {
+                  navLink = link.link || ""
+                  isExternal = true
                 }
                 return (
                   <li

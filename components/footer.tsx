@@ -97,10 +97,10 @@ export function Footer({ footer }: { footer: PageAndNavQuery["footer"] }) {
             {social &&
               social.map((item) => {
                 const platformLink = getLink(item.platform as PlatformKey)
-                console.log(platformLink)
                 return (
                   <Link
                     href={`${platformLink}/${item?.handle}`}
+                    key={platformLink}
                     target="_blank"
                     rel="noreferrer"
                     data-tina-field={tinaField(footer, "social")}

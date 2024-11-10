@@ -55,6 +55,7 @@ export function CardGrid(props: PageBlocksCardgrid): JSX.Element {
                         <Link
                           href={linkItem?.link || ""}
                           data-tina-field={tinaField(linkItem, "link")}
+                          key={linkItem?.link}
                         >
                           {linkItem?.style === "button" ? (
                             <Button

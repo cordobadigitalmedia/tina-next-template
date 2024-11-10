@@ -7,23 +7,18 @@ import { PageAndNavQuery } from "@/tina/__generated__/types"
 import { Menu } from "lucide-react"
 import { tinaField } from "tinacms/dist/react"
 
-import { Button, buttonVariants } from "@/components/ui/button"
+import { Button } from "@/components/ui/button"
 import {
   Dialog,
   DialogContent,
   DialogFooter,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { BasicIcons, Logo } from "@/components/icons"
 import { ThemeToggle } from "@/components/theme-toggle"
 
 const links = [
   { label: "Home", link: "/" },
   { label: "Blog", link: "/blog" },
-]
-const social = [
-  { handle: "llama-link", platform: "twitter" },
-  { handle: "llama-link", platform: "github" },
 ]
 
 export function SiteHeader({
@@ -126,40 +121,5 @@ export function SiteHeader({
         </div>
       </div>
     </header>
-  )
-}
-
-export function SecondaryMenu(props: { className?: string }) {
-  return (
-    <nav className={`${props.className} items-center space-x-1`}>
-      {social.map((item) => {
-        const platformName = item?.platform as unknown as "github" | "twitter"
-        const platformLinks = {
-          github: "https://github.com",
-          twitter: "https://twitter.com",
-        }
-        const platformLink = platformLinks[platformName]
-        const Icon = BasicIcons[platformName]
-        return (
-          <Link
-            key={`${platformLink}/${item?.handle}`}
-            href={`${platformLink}/${item?.handle}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <div
-              className={buttonVariants({
-                size: "sm",
-                variant: "ghost",
-              })}
-            >
-              <Icon className="size-5 fill-current" />
-              <span className="sr-only">{item?.platform}</span>
-            </div>
-          </Link>
-        )
-      })}
-      <ThemeToggle />
-    </nav>
   )
 }

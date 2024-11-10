@@ -19,7 +19,7 @@ export function BlogPageComponent(props: {
   const backgroundImage = data.post.image ? `${data.post.image}` : "none"
   return (
     <>
-      <SiteHeader {...props.data.nav} />
+      <SiteHeader header={data.header} nav={data.nav} />
       <div className="flex min-h-[calc(100vh-65px)] flex-col">
         {backgroundImage !== "none" && (
           <section className={`relative h-[35vh]`}>
@@ -55,7 +55,7 @@ export function BlogPageComponent(props: {
             <TinaMarkdown content={data.post.body} />
           </div>
         </section>
-        <Footer />
+        <Footer footer={data.footer} />
       </div>
     </>
   )

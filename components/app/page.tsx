@@ -51,7 +51,7 @@ export function PageComponent(props: {
           }
         }
       })}
-      <Footer />
+      <Footer footer={data.footer} />
     </>
   )
 }

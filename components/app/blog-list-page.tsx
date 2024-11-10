@@ -15,13 +15,13 @@ export function BlogIndexPageComponent(props: {
   const { data } = useTina(props)
   return (
     <>
-      <SiteHeader {...data.nav} />
-      <div className="h-full bg-muted">
+      <SiteHeader header={data.header} nav={data.nav} />
+      <div className="bg-muted h-full">
         <div className="container flex flex-col gap-8 py-8">
           <BlogList {...data} />
         </div>
       </div>
-      <Footer />
+      <Footer footer={data.footer} />
     </>
   )
 }

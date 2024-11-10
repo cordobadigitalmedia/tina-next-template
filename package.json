@@ -23,7 +23,7 @@
     "@tinacms/cli": "latest",
     "class-variance-authority": "^0.4.0",
     "clsx": "^1.2.1",
-    "lucide-react": "0.105.0-alpha.4",
+    "lucide-react": "latest",
     "next": "^15.0.2",
     "next-themes": "^0.2.1",
     "prettier-plugin-tailwindcss": "^0.3.0",

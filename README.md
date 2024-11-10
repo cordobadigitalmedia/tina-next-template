@@ -1,5 +1,8 @@
 # Next.js 15 with TinaCMS
 
+## Base template
+I originally forked https://github.com/tinacms/llama-link and then upgraded to latest versions of next.js and tina. So this version includes adding tables in the rich text editor. 
+
 ## Technologies
 
 - [Next.js 15](https://nextjs.org/docs)

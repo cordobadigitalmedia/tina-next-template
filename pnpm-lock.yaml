@@ -32,14 +32,14 @@ dependencies:
     specifier: ^1.2.1
     version: 1.2.1
   lucide-react:
-    specifier: 0.105.0-alpha.4
-    version: 0.105.0-alpha.4(react@18.3.1)
+    specifier: latest
+    version: 0.456.0(react@18.3.1)
   next:
     specifier: ^15.0.2
     version: 15.0.2(react-dom@18.3.1)(react@18.3.1)
   next-themes:
-    specifier: ^0.2.1
-    version: 0.2.1(next@15.0.2)(react-dom@18.3.1)(react@18.3.1)
+    specifier: latest
+    version: 0.4.3(react-dom@18.3.1)(react@18.3.1)
   prettier-plugin-tailwindcss:
     specifier: ^0.3.0
     version: 0.3.0(@ianvs/prettier-plugin-sort-imports@3.7.2)(prettier@2.8.8)
@@ -10655,21 +10655,21 @@ packages:
     dependencies:
       yallist: 3.1.1
 
-  /lucide-react@0.105.0-alpha.4(react@18.3.1):
-    resolution:
-      {
-        integrity: sha512-QclWOzKYj7sDW33jTQK4enmxL1LmI2SHFqEEP56EWhvs4mmlbbFe6ALYcdcdGysNISNovEbH5WBHg8tN5DLn0w==,
-      }
-    peerDependencies:
-      react: ^16.5.1 || ^17.0.0 || ^18.0.0
-    dependencies:
-      react: 18.3.1
-    dev: false
-
   /lucide-react@0.424.0(react@18.3.1):
     resolution:
       {
         integrity: sha512-x2Nj2aytk1iOyHqt4hKenfVlySq0rYxNeEf8hE0o+Yh0iE36Rqz0rkngVdv2uQtjZ70LAE73eeplhhptYt9x4Q==,
+      }
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
+    dependencies:
+      react: 18.3.1
+    dev: false
+
+  /lucide-react@0.456.0(react@18.3.1):
+    resolution:
+      {
+        integrity: sha512-DIIGJqTT5X05sbAsQ+OhA8OtJYyD4NsEMCA/HQW/Y6ToPQ7gwbtujIoeAaup4HpHzV35SQOarKAWH8LYglB6eA==,
       }
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0-rc
@@ -11851,17 +11851,15 @@ packages:
     engines: { node: ">= 0.6" }
     dev: false
 
-  /next-themes@0.2.1(next@15.0.2)(react-dom@18.3.1)(react@18.3.1):
+  /next-themes@0.4.3(react-dom@18.3.1)(react@18.3.1):
     resolution:
       {
-        integrity: sha512-B+AKNfYNIzh0vqQQKqQItTS8evEouKD7H5Hj3kmuPERwddR2TxvDSFZuTj6T7Jfn1oyeUyJMydPl1Bkxkh0W7A==,
+        integrity: sha512-nG84VPkTdUHR2YeD89YchvV4I9RbiMAql3GiLEQlPvq1ioaqPaIReK+yMRdg/zgiXws620qS1rU30TiWmmG9lA==,
       }
     peerDependencies:
-      next: "*"
-      react: "*"
-      react-dom: "*"
+      react: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
+      react-dom: ^16.8 || ^17 || ^18 || ^19 || ^19.0.0-rc
     dependencies:
-      next: 15.0.2(react-dom@18.3.1)(react@18.3.1)
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
     dev: false

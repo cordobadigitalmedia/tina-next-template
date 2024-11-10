@@ -11,15 +11,16 @@ blocks:
       - headline: Item 1
         coverimage: /images/lms-image-GaaFkDYJQ9gmTXSZLtgbLTXAy2qDs8.jpg
         content: |
-          * one
-          * two
-          * three
+          * lesson 1
+          * lesson 2
+
+          ### My favourite course
         links:
           - link: /myurl
             label: Link
             style: simple
           - link: /mypage
-            label: Sign up
+            label: Register
             style: button
     gridTitle: My cards
     _template: cardgrid

@@ -13,13 +13,13 @@ export default defineConfig({
       publicFolder: "public",
       mediaRoot: "images",
     },
-    accept: ["image/jpeg"],
+    accept: ["image"],
   },
   schema: {
     collections: [
       {
         name: "page",
-        label: "Page",
+        label: "Pages",
         path: "content/pages",
         format: "md",
         ui: {
@@ -264,7 +264,7 @@ export default defineConfig({
       },
       {
         name: "post",
-        label: "Post",
+        label: "Posts",
         path: "content/posts",
         format: "md",
         fields: [
@@ -302,7 +302,7 @@ export default defineConfig({
       },
       {
         name: "author",
-        label: "Author",
+        label: "Post Authors",
         path: "content/authors",
         format: "md",
         fields: [
@@ -320,7 +320,7 @@ export default defineConfig({
       },
       {
         name: "nav",
-        label: "Nav",
+        label: "Nav (Sitewide)",
         path: "content/nav",
         format: "md",
         ui: {
@@ -343,8 +343,112 @@ export default defineConfig({
             },
             fields: [
               { type: "string", name: "label", label: "Label" },
-              { type: "string", name: "link", label: "Link" },
+              {
+                type: "string",
+                name: "link",
+                label: "Relative or External Link",
+              },
+              {
+                name: "linkedPage",
+                label: "Linked Page",
+                type: "reference",
+                collections: ["page"],
+              },
+              {
+                type: "string",
+                name: "linkType",
+                label: "Link type",
+                options: ["relative", "page", "external"],
+              },
             ],
+          },
+        ],
+      },
+      {
+        name: "header",
+        label: "Header (Sitewide)",
+        path: "content/header",
+        format: "json",
+        ui: {
+          global: true,
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            name: "logo",
+            label: "Logo",
+            type: "image",
+          },
+          { name: "siteTitle", label: "Site Title", type: "string" },
+          {
+            name: "darkmode",
+            label: "Show Dark/Light Mode Switcher",
+            description: "Placed on the top right. Light/Dark mode switcher",
+            type: "boolean",
+          },
+          {
+            name: "userlogin",
+            label: "Show Log in/Sign Up/Avatar",
+            description:
+              "Placed on the top right. Uses Kinde.com to manage the user authentication system",
+            type: "boolean",
+          },
+        ],
+      },
+      {
+        name: "footer",
+        label: "Footer (Sitewide)",
+        path: "content/footer",
+        format: "json",
+        ui: {
+          global: true,
+          allowedActions: {
+            create: false,
+            delete: false,
+          },
+        },
+        fields: [
+          {
+            type: "object",
+            label: "Social Links",
+            description:
+              "Direct link to your social media account - leave empty if N/A",
+            name: "social",
+            fields: [
+              {
+                type: "string",
+                label: "Facebook",
+                name: "facebook",
+              },
+              {
+                type: "string",
+                label: "Twitter",
+                name: "twitter",
+              },
+              {
+                type: "string",
+                label: "Instagram",
+                name: "instagram",
+              },
+              {
+                type: "string",
+                label: "Github",
+                name: "github",
+              },
+              {
+                type: "string",
+                label: "YouTube",
+                name: "youtube",
+              },
+            ],
+          },
+          {
+            name: "copyright",
+            label: "Copyright notice",
+            type: "string",
           },
         ],
       },

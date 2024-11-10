@@ -1,7 +1,8 @@
 import "@/styles/globals.css"
+import { Suspense } from "react"
+
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
 
 interface RootLayoutProps {
@@ -11,17 +12,21 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
         <head />
         <body
           className={cn(
-            "min-h-screen bg-background font-sans antialiased",
+            "bg-background font-sans antialiased",
             fontSans.variable
           )}
         >
-          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <div className="min-h-screen">{children}</div>
-            <TailwindIndicator />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
           </ThemeProvider>
         </body>
       </html>

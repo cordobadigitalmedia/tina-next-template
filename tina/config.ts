@@ -275,6 +275,45 @@ export default defineConfig({
                   },
                 ],
               },
+              {
+                name: "gallery",
+                label: "Image Gallery",
+                ui: {
+                  itemProps: (item) => {
+                    return { label: item.galleryTitle }
+                  },
+                },
+                fields: [
+                  {
+                    name: "galleryImages",
+                    label: "Gallery Images",
+                    type: "object",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.caption }
+                      },
+                    },
+                    fields: [
+                      {
+                        name: "caption",
+                        label: "Caption",
+                        type: "string",
+                      },
+                      {
+                        name: "galleryImage",
+                        label: "Gallery Image",
+                        type: "image",
+                      },
+                    ],
+                  },
+                  {
+                    name: "galleryTitle",
+                    label: "Image Gallery Title",
+                    type: "string",
+                  },
+                ],
+              },
             ],
           },
         ],

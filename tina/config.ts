@@ -1,5 +1,9 @@
 import { defineConfig } from "tinacms"
 
+import { RichTextTemplates } from "./rich-text-templates"
+
+const backgroundColorOptions = ["none", "primary", "secondary", "muted"]
+
 export default defineConfig({
   branch: process.env.VERCEL_GIT_COMMIT_REF || "add-blocks",
   clientId: process.env.TINA_CLIENT_ID || "",
@@ -21,10 +25,10 @@ export default defineConfig({
         name: "page",
         label: "Pages",
         path: "content/pages",
-        format: "md",
+        format: "mdx",
         ui: {
           router: (props) => {
-            return "/"
+            return `/${props.document._sys.filename}`
           },
         },
         fields: [
@@ -51,6 +55,19 @@ export default defineConfig({
                     type: "rich-text",
                     label: "Content",
                     description: "Rich content for page",
+                    templates: RichTextTemplates,
+                  },
+                  {
+                    type: "string",
+                    name: "backgroundColor",
+                    label: "Background color type",
+                    options: backgroundColorOptions,
+                  },
+                  {
+                    type: "string",
+                    name: "textAlign",
+                    label: "Text Alignment",
+                    options: ["left", "center", "right"],
                   },
                 ],
               },
@@ -254,6 +271,45 @@ export default defineConfig({
                   {
                     name: "gridTitle",
                     label: "Card Grid Title",
+                    type: "string",
+                  },
+                ],
+              },
+              {
+                name: "gallery",
+                label: "Image Gallery",
+                ui: {
+                  itemProps: (item) => {
+                    return { label: item.galleryTitle }
+                  },
+                },
+                fields: [
+                  {
+                    name: "galleryImages",
+                    label: "Gallery Images",
+                    type: "object",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.caption }
+                      },
+                    },
+                    fields: [
+                      {
+                        name: "caption",
+                        label: "Caption",
+                        type: "string",
+                      },
+                      {
+                        name: "galleryImage",
+                        label: "Gallery Image",
+                        type: "image",
+                      },
+                    ],
+                  },
+                  {
+                    name: "galleryTitle",
+                    label: "Image Gallery Title",
                     type: "string",
                   },
                 ],

@@ -12,12 +12,6 @@ import { tinaField } from "tinacms/dist/react"
 
 import { buttonVariants } from "@/components/ui/button"
 
-/**
-const social = [
-  { handle: "llama-link", platform: "twitter" },
-  { handle: "llama-link", platform: "github" },
-]
-   */
 function objectEntriesFilter(
   obj: { [s: string]: unknown } | ArrayLike<unknown>
 ) {
@@ -80,8 +74,12 @@ function SocialIcon({ platform, size = 24 }: SocialIconProps) {
 export function Footer({ footer }: { footer: PageAndNavQuery["footer"] }) {
   const year = React.useMemo(() => new Date().getFullYear(), [])
   const social = footer.social ? objectEntriesFilter(footer.social) : null
+  let bgStyle = ""
+  if (footer.backgroundColor) {
+    bgStyle = `bg-${footer.backgroundColor}`
+  }
   return (
-    <footer className="">
+    <footer className={bgStyle}>
       <div className="mx-auto max-w-7xl px-2 py-4 md:flex md:items-center md:justify-between lg:px-4">
         <div className="mt-8 md:mt-0">
           <p

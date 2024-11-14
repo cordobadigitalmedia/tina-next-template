@@ -2,15 +2,14 @@
 links:
   - label: Home
     link: /
-    linkedPage: content/pages/home.md
+    linkedPage: content/pages/home.mdx
     linkType: page
   - label: Blog
     link: /blog
-    linkedPage: ''
+    linkedPage: ""
     linkType: relative
   - label: Contact
     link: /contact
-    linkedPage: content/pages/contact.md
+    linkedPage: content/pages/contact.mdx
     linkType: page
 ---
-

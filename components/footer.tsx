@@ -80,7 +80,6 @@ function SocialIcon({ platform, size = 24 }: SocialIconProps) {
 export function Footer({ footer }: { footer: PageAndNavQuery["footer"] }) {
   const year = React.useMemo(() => new Date().getFullYear(), [])
   const social = footer.social ? objectEntriesFilter(footer.social) : null
-  console.log(social)
   return (
     <footer className="">
       <div className="mx-auto max-w-7xl px-2 py-4 md:flex md:items-center md:justify-between lg:px-4">

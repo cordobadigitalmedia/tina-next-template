@@ -5,7 +5,7 @@ import { RichTextTemplates } from "./rich-text-templates"
 const backgroundColorOptions = ["none", "primary", "secondary", "muted"]
 
 export default defineConfig({
-  branch: process.env.VERCEL_GIT_COMMIT_REF || "add-blocks",
+  branch: process.env.VERCEL_GIT_COMMIT_REF,
   clientId: process.env.TINA_CLIENT_ID || "",
   token: process.env.TINA_TOKEN || "",
   build: {

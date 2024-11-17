@@ -1,9 +1,25 @@
 import "@/styles/globals.css"
-import { Suspense } from "react"
+import "@/styles/styles.css"
+import type { Viewport } from "next"
+import { Noto_Sans, Noto_Serif } from "next/font/google"
 
-import { fontSans } from "@/lib/fonts"
-import { cn } from "@/lib/utils"
 import { ThemeProvider } from "@/components/theme-provider"
+
+export const viewport: Viewport = {
+  width: "device-width",
+}
+
+const noto_sans = Noto_Sans({
+  subsets: ["latin"],
+  variable: "--font-noto-sans",
+  display: "swap",
+})
+
+const noto_serif = Noto_Serif({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-noto-serif",
+})
 
 interface RootLayoutProps {
   children: React.ReactNode
@@ -14,12 +30,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
     <>
       <html lang="en" suppressHydrationWarning>
         <head />
-        <body
-          className={cn(
-            "bg-background font-sans antialiased",
-            fontSans.variable
-          )}
-        >
+        <body className={noto_sans.variable + " " + noto_serif.variable}>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"

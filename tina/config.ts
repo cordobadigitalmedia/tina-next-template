@@ -276,6 +276,82 @@ export default defineConfig({
                 ],
               },
               {
+                name: "cardgrid2Col",
+                label: "Card Grid with 2 Columns",
+                ui: {
+                  itemProps: (item) => {
+                    return { label: item.gridTitle }
+                  },
+                },
+                fields: [
+                  {
+                    name: "cardblock",
+                    label: "Card Block",
+                    type: "object",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.headline }
+                      },
+                    },
+                    fields: [
+                      {
+                        name: "headline",
+                        label: "Headline",
+                        type: "string",
+                      },
+                      {
+                        name: "coverimage",
+                        label: "Cover Image",
+                        type: "image",
+                      },
+                      {
+                        name: "content",
+                        label: "Content",
+                        type: "rich-text",
+                      },
+                      {
+                        name: "links",
+                        label: "Links",
+                        type: "object",
+                        list: true,
+                        ui: {
+                          itemProps: (item) => {
+                            return { label: item.label }
+                          },
+                        },
+                        fields: [
+                          {
+                            type: "string",
+                            name: "link",
+                            label: "Relative or absolute link",
+                          },
+                          {
+                            type: "string",
+                            name: "label",
+                            label: "Button/Link Text",
+                          },
+                          {
+                            type: "string",
+                            name: "style",
+                            label: "Link Type",
+                            options: [
+                              { label: "Simple link", value: "simple" },
+                              { label: "Clickable Button", value: "button" },
+                            ],
+                          },
+                        ],
+                      },
+                    ],
+                  },
+                  {
+                    name: "gridTitle",
+                    label: "Card Grid Title",
+                    type: "string",
+                  },
+                ],
+              },
+              {
                 name: "gallery",
                 label: "Image Gallery",
                 ui: {
@@ -310,6 +386,47 @@ export default defineConfig({
                   {
                     name: "galleryTitle",
                     label: "Image Gallery Title",
+                    type: "string",
+                  },
+                ],
+              },
+              {
+                name: "collapsibleSection",
+                label: "Collapsible Blocks",
+                ui: {
+                  itemProps: (item) => {
+                    return { label: item.collapsibleTitle }
+                  },
+                },
+                fields: [
+                  {
+                    name: "accordionBlock",
+                    label: "Collapsible Block",
+                    type: "object",
+                    list: true,
+                    ui: {
+                      itemProps: (item) => {
+                        return { label: item.headline }
+                      },
+                    },
+                    fields: [
+                      {
+                        name: "headline",
+                        label: "Headline",
+                        type: "string",
+                      },
+                      {
+                        name: "content",
+                        label: "Content",
+                        type: "rich-text",
+                        description: "content for the collapsible block",
+                        templates: RichTextTemplates,
+                      },
+                    ],
+                  },
+                  {
+                    name: "collapsibleTitle",
+                    label: "Collapsible Elements Title",
                     type: "string",
                   },
                 ],
@@ -416,6 +533,12 @@ export default defineConfig({
                 label: "Link type",
                 options: ["relative", "page", "external"],
               },
+              {
+                type: "string",
+                name: "buttonStyle",
+                label: "Button type",
+                options: ["ghost", "default", "secondary"],
+              },
             ],
           },
         ],
@@ -432,6 +555,13 @@ export default defineConfig({
             delete: false,
           },
         },
+        defaultItem: () => {
+          return {
+            logoWidth: 50,
+            logoHeight: 50,
+            headerHeight: 64,
+          }
+        },
         fields: [
           {
             name: "logo",
@@ -443,6 +573,24 @@ export default defineConfig({
             label: "Logo Title",
             description: "Show a title next to the logo",
             type: "string",
+          },
+          {
+            name: "logoWidth",
+            label: "Logo Width",
+            description: "Minimum Logo Width",
+            type: "number",
+          },
+          {
+            name: "logoHeight",
+            label: "Logo Height",
+            description: "Minimum Logo Height",
+            type: "number",
+          },
+          {
+            name: "headerHeight",
+            label: "Header Height",
+            description: "Minimum Header Height",
+            type: "number",
           },
           {
             name: "siteTitle",
@@ -461,6 +609,26 @@ export default defineConfig({
             label: "Right align navigation",
             description: "Left align when off, Right align when on",
             type: "boolean",
+          },
+          {
+            type: "string",
+            name: "backgroundColor",
+            label: "Background color type",
+            options: backgroundColorOptions,
+          },
+          {
+            type: "object",
+            name: "ctaButton",
+            label: "Call to action button",
+            fields: [
+              { name: "title", type: "string" },
+              { name: "link", type: "string" },
+              {
+                name: "type",
+                type: "string",
+                options: ["relative", "absolute"],
+              },
+            ],
           },
           {
             name: "darkmode",

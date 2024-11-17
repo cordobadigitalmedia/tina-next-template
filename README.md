@@ -14,16 +14,18 @@ I originally forked https://github.com/tinacms/llama-link and then upgraded to l
 
 - Pages as a [dynamic route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) with following optional blocks on each page
   - Main Content Rich Text (Designed for body content of standard pages)
+    - Includes custom components embed with Alert, Youtube, GoogleMaps
   - Hero Section Block (Designed for landing pages)
   - Cover Section Block (Designed for top of standard pages)
   - Featured Posts (Card view of featured blog posts)
-  - Card Grid (Grid view of content as card)
+  - Card Grid (Grid view of content as card) with 2 or 3 columns
+  - Collapsible items (accordion) section
 - Posts as a [dynamic route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) with field structure
   - Title, author, image, description, body
 - Sitewide one-time content
-  - Header with logo and theme switcher
+  - Header with logo, nav links, CTA button, on/off theme switcher, on/off user login
   - Footer with social links and copyright info
-  - Navigation with 3 types of links: external, relative and reference to page
+  - Navigation with 3 types of links: external, relative and reference to page - nav can be left or right aligned in header
 
 ## Develop locally
 

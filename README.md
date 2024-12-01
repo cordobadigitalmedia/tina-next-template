@@ -22,7 +22,7 @@ I originally forked https://github.com/tinacms/llama-link and then upgraded to l
   - Collapsible items (accordion) section
 - Posts as a [dynamic route](https://nextjs.org/docs/app/building-your-application/routing/dynamic-routes) with field structure
   - Title, author, image, description, body
-- Forms as with text, large text and select fields
+- Forms rendered as dynamic routes - available fields are text, large text and select fields
   - Server action for submission
 - Sitewide one-time content
   - Header with logo, nav links, CTA button, on/off theme switcher, on/off user login

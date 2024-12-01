@@ -11,6 +11,7 @@ import {
 import { tinaField } from "tinacms/dist/react"
 
 import { buttonVariants } from "@/components/ui/button"
+import { SiteCredit } from "@/components/ui/site-credit"
 
 function objectEntriesFilter(
   obj: { [s: string]: unknown } | ArrayLike<unknown>
@@ -75,21 +76,17 @@ export function Footer({ footer }: { footer: PageAndNavQuery["footer"] }) {
   const year = React.useMemo(() => new Date().getFullYear(), [])
   const social = footer.social ? objectEntriesFilter(footer.social) : null
   let bgStyle = ""
+  let textStyle = `text-primary`
   if (footer.backgroundColor) {
     bgStyle = `bg-${footer.backgroundColor}`
+  }
+  if (footer.backgroundColor === "primary") {
+    textStyle = `text-secondary`
   }
   return (
     <footer className={bgStyle}>
       <div className="mx-auto max-w-7xl px-2 py-4 md:flex md:items-center md:justify-between lg:px-4">
-        <div className="mt-8 md:mt-0">
-          <p
-            className="text-primary text-sm leading-5"
-            data-tina-field={tinaField(footer, "copyright")}
-          >
-            &copy; {year} {footer.copyright}
-          </p>
-        </div>
-        <div className="flex justify-center md:justify-start">
+        <div className="flex min-w-[215px] justify-center md:justify-start">
           <nav className={`items-center space-x-1`}>
             {social &&
               social.map((item) => {
@@ -116,6 +113,19 @@ export function Footer({ footer }: { footer: PageAndNavQuery["footer"] }) {
               })}
           </nav>
         </div>
+        <div className="pb-2 md:pb-0">
+          <p
+            className={`${textStyle} text-center text-sm leading-5 md:text-left`}
+            data-tina-field={tinaField(footer, "copyright")}
+          >
+            &copy; {year} {footer.copyright}
+          </p>
+        </div>
+        <SiteCredit
+          text="Built by Cordoba Digital Media"
+          link="https://cordobadigitalmedia.com"
+          footerbg={footer.backgroundColor || "secondary"}
+        />
       </div>
     </footer>
   )

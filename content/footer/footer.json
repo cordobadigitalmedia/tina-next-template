@@ -3,5 +3,6 @@
     "facebook": "myaccount",
     "github": "ismaelrumzan"
   },
-  "copyright": "Your Org Name"
+  "copyright": "Your Org Name",
+  "backgroundColor": "primary"
 }

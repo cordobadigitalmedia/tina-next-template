@@ -33,17 +33,33 @@ export function PageComponent(props: {
               case "PageBlocksWelcomeHero": {
                 return <WelcomeHero key={i} {...block} />
               }
-              case "PageBlocksCardgrid": {
+              case "PageBlocksCardgrid2Col": {
                 return (
-                  <div className="container mx-auto grid grid-cols-1 gap-8 p-4 sm:grid-cols-2 md:grid-cols-3">
-                    <CardGrid key={i} {...block} />
+                  <div
+                    key={block.gridTitle}
+                    className="container mx-auto grid grid-cols-1 gap-8 p-4 sm:grid-cols-2"
+                  >
+                    <CardGrid {...block} />
                   </div>
                 )
               }
-              case "PageBlocksCardgrid2Col": {
+              case "PageBlocksCardgrid3Col": {
                 return (
-                  <div className="container mx-auto grid grid-cols-1 gap-8 p-4 sm:grid-cols-2">
-                    <CardGrid key={i} {...block} />
+                  <div
+                    key={block.gridTitle}
+                    className="container mx-auto grid grid-cols-1 gap-8 p-4 sm:grid-cols-2 md:grid-cols-3"
+                  >
+                    <CardGrid {...block} />
+                  </div>
+                )
+              }
+              case "PageBlocksCardgrid4Col": {
+                return (
+                  <div
+                    key={block.gridTitle}
+                    className="container mx-auto grid grid-cols-1 gap-8 p-4 sm:grid-cols-2 md:grid-cols-4"
+                  >
+                    <CardGrid {...block} />
                   </div>
                 )
               }
